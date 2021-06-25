@@ -10,27 +10,6 @@ interface Configuration extends WebpackConfiguration {
     devServer?: WebpackDevServerConfiguration;
 }
 
-const CSSModuleLoader = {
-    loader: 'css-loader',
-    options: {
-        modules: true,
-        localIdentName: '[name]_[local]_[hash:base64:5]',
-        importLoaders: 2,
-        camelCase: true,
-        sourceMap: false,
-    }
-}
-// For our normal CSS files we would like them globally scoped
-const CSSLoader = {
-    loader: 'css-loader',
-    options: {
-        modules: "global",
-        importLoaders: 2,
-        camelCase: true,
-        sourceMap: false, // turned off as causes delay
-    }
-}
-
 const webpackConfig = (): Configuration => ({
     entry: "./src/index.tsx",
     ...(process.env.production || !process.env.development
@@ -57,7 +36,7 @@ const webpackConfig = (): Configuration => ({
             },
             {
                 test: /\.s?css$/,
-                use: ["style-loader", "css-loader"],
+                use: ["style-loader", "css-loader", "sass-loader"],
             },
         ],
     },
