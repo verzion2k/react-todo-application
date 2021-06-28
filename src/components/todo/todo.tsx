@@ -1,5 +1,5 @@
-import { FC } from "react";
+import React from 'react'
 
-export const Todo: FC = () => {
-    return <h2>test</h2>
-}
+const Todo: React.FC = () => <h2>test</h2>
+
+export default Todo
