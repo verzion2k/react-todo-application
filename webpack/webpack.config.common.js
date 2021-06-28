@@ -1,14 +1,12 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
 
 module.exports = {
 	entry: './src/index.tsx',
 	resolve: {
 		extensions: ['.ts', '.tsx', '.js'],
-		plugins: [new TsconfigPathsPlugin({ configFile: './tsconfig.json' })],
 	},
 	output: {
 		filename: '[name].[contenthash].js',
