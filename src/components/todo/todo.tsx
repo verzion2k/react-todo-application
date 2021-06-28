@@ -1,5 +1,14 @@
 import React from 'react'
+import { useFetch } from 'src/hooks/useFetch'
 
-const Todo: React.FC = () => <h2>test</h2>
+export const Todo: React.FC = () => {
+	const { data } = useFetch(`${process.env.API_URL}todo`)
 
-export default Todo
+	return (
+		<div>
+			{data.map(todo => (
+				<p key={todo.id}>{todo.title}</p>
+			))}
+		</div>
+	)
+}

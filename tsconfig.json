@@ -1,23 +1,27 @@
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "target": "ESNext",
-    "removeComments": true,
-    "allowSyntheticDefaultImports": true,
-    "jsx": "react",
-    "allowJs": true,
-    "baseUrl": "src/",
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "downlevelIteration": true,
-    "paths": {
-      "*": ["src/*"]
-    },
-    "lib": ["esnext", "dom", "dom.iterable"],
-    "sourceMap": true,
-    "noImplicitAny": false
-  },
-  "exclude": ["node_modules", "build"],
-  "include": ["src/**/*"]
+	"compilerOptions": {
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"target": "ESNext",
+		"removeComments": true,
+		"allowSyntheticDefaultImports": true,
+		"jsx": "react",
+		"allowJs": true,
+		"baseUrl": ".",
+		"esModuleInterop": true,
+		"resolveJsonModule": true,
+		"downlevelIteration": true,
+		"paths": {
+			"src/*": ["src/*"],
+			"components/*": ["src/components/*"]
+		},
+		"lib": ["esnext", "dom", "dom.iterable"],
+		"sourceMap": true,
+		"noImplicitAny": false
+	},
+	"exclude": ["node_modules", "build"],
+	"include": ["src/**/*"],
+	"parserOptions": {
+		"project": "./tsconfig.json"
+	}
 }

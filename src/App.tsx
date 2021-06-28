@@ -1,5 +1,6 @@
 import React from 'react'
+import { Todo } from 'components/todo/todo'
 
-const App: React.FC = () => <h1 className="todo">React To/Do App</h1>
+const App: React.FC = () => <Todo />
 
 export default App
