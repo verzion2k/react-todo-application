@@ -7,21 +7,17 @@
 		"allowSyntheticDefaultImports": true,
 		"jsx": "react",
 		"allowJs": true,
-		"baseUrl": ".",
+		"baseUrl": "./src",
 		"esModuleInterop": true,
 		"resolveJsonModule": true,
 		"downlevelIteration": true,
 		"paths": {
-			"src/*": ["src/*"],
-			"components/*": ["src/components/*"]
+			"@/*": ["./*"]
 		},
 		"lib": ["esnext", "dom", "dom.iterable"],
 		"sourceMap": true,
 		"noImplicitAny": false
 	},
 	"exclude": ["node_modules", "build"],
-	"include": ["src/**/*"],
-	"parserOptions": {
-		"project": "./tsconfig.json"
-	}
+	"include": ["src/**/*"]
 }

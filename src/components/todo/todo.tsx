@@ -1,5 +1,5 @@
 import React from 'react'
-import { useFetch } from 'src/hooks/useFetch'
+import { useFetch } from '@/hooks/useFetch'
 
 export const Todo: React.FC = () => {
 	const { data } = useFetch(`${process.env.API_URL}todo`)

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { TodoData } from 'src/types/todoData'
+import { TodoData } from '@/types/todoData'
 
 export type UseFetch = (url: string) => {
 	loading: boolean
