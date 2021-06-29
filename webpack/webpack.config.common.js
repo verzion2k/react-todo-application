@@ -34,11 +34,7 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: './public/index.html',
 		}),
-		new ForkTsCheckerWebpackPlugin({
-			eslint: {
-				files: './src/**/*.{ts,tsx,js,jsx}',
-			},
-		}),
+		new ForkTsCheckerWebpackPlugin(),
 		new Dotenv({
 			path: '.env',
 		}),
