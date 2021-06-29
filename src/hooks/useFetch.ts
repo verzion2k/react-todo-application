@@ -24,6 +24,7 @@ export const useFetch: UseFetch = url => {
 				setData(todos)
 			})
 			.catch(err => {
+				// eslint-disable-next-line no-console
 				console.error('Error fetching data: ', err)
 				setError(err)
 			})
