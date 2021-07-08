@@ -1,36 +1,37 @@
-import { Container, createStyles, makeStyles } from '@material-ui/core';
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { TodoList } from './components/todoList/todoList';
-import { fetchTodoData } from './store/reducers/todosReducer';
-import { SelectorTodoState } from './types/types';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { Dispatch } from 'redux';
+import { Container } from '@material-ui/core';
+import { TodoList } from '@/components/todoList';
+import { setTodo } from '@/store/todos/todos.action';
+import { SetTodoAction, useTodos } from '@/store/todos';
+import { useStyles } from './app.style';
 
-const useStyles = makeStyles(theme =>
-	createStyles({
-		root: {
-			display: 'flex',
-			justifyContent: 'center',
-			alignItems: 'center',
-			height: '100vh',
-			overflowY: 'hidden',
-			padding: theme.spacing(2),
-			backgroundColor: theme.palette.secondary.main,
-		},
-	})
-);
+export const fetchTodoData =
+	() => async (dispatch: Dispatch<SetTodoAction>) => {
+		const todos = await fetch(`${process.env.API_URL}todo`).then(res => {
+			if (!res.ok) {
+				throw new Error("Can't fetch todo data");
+			}
+
+			return res.json();
+		});
+
+		dispatch(setTodo(todos));
+	};
 
 const App: React.FC = () => {
-	const state = useSelector((data: SelectorTodoState) => data.todos);
 	const classes = useStyles();
 	const dispatch = useDispatch();
+	const todos = useTodos();
 
-	useEffect(() => {
+	React.useEffect(() => {
 		dispatch(fetchTodoData());
 	}, []);
 
 	return (
 		<Container className={classes.root} maxWidth='xl'>
-			<TodoList todos={state.todos} />
+			<TodoList todos={todos} />
 		</Container>
 	);
 };

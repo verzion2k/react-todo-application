@@ -1,8 +1,8 @@
-import { addTodoHandler } from '@/store/actionCreators';
+import { addTodo } from '@/store/todos';
 import { TextField } from '@material-ui/core';
 import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useStyles } from './styles';
+import { useStyles } from './newTodoInput.style';
 
 export const NewTodoInput: React.FC = () => {
 	const [input, setInput] = useState('');
@@ -19,7 +19,7 @@ export const NewTodoInput: React.FC = () => {
 	const handleAddTodo = React.useCallback(
 		(title: string) => (event: KeyboardEvent<HTMLDivElement>) => {
 			if (event.key === 'Enter') {
-				dispatch(addTodoHandler(title));
+				dispatch(addTodo(title));
 				setInput('');
 			}
 		},

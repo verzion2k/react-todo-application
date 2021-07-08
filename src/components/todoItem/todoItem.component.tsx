@@ -1,5 +1,5 @@
-import { removeTodoHandler } from '@/store/actionCreators';
-import { Todo } from '@/types/types';
+import { Todo } from '@/store/todos/todo.interface';
+import { removeTodo } from '@/store/todos/todos.action';
 import {
 	Checkbox,
 	IconButton,
@@ -12,7 +12,8 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import clsx from 'clsx';
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { useStyles } from './styles';
+import { CheckboxStateType } from './todoItem.interface';
+import { useStyles } from './todoItem.style';
 
 export const TodoItem: React.FC<Todo> = ({
 	id,
@@ -22,15 +23,31 @@ export const TodoItem: React.FC<Todo> = ({
 }) => {
 	const classes = useStyles();
 	const dispatch = useDispatch();
+	const [checkbox, setCheckbox] = React.useState<CheckboxStateType>(
+		prevState => ({
+			...prevState,
+			[id]: isDone,
+		})
+	);
 
-	const deleteTodo = React.useCallback(() => {
-		dispatch(removeTodoHandler(id));
-	}, []);
+	const handleChange = React.useCallback(
+		() =>
+			setCheckbox(prevState => ({ ...prevState, [id]: !prevState[id].isDone })),
+		[id]
+	);
+
+	const deleteTodo = React.useCallback(() => dispatch(removeTodo(id)), [id]);
 
 	return (
-		<ListItem role={undefined} dense button className={classes.root}>
+		<ListItem dense button className={classes.root}>
 			<ListItemIcon>
-				<Checkbox edge='start' checked={isDone} tabIndex={-1} disableRipple />
+				<Checkbox
+					edge='start'
+					defaultChecked={isDone}
+					disableRipple
+					checked={checkbox[id].isDone}
+					onChange={handleChange}
+				/>
 			</ListItemIcon>
 			<ListItemText
 				id={id.toString()}
