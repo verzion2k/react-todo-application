@@ -1,4 +1,4 @@
-import { TodoData } from '@/types/todoData'
+import { Todo } from '@/types/types'
 import {
 	Checkbox,
 	IconButton,
@@ -12,7 +12,7 @@ import clsx from 'clsx'
 import React from 'react'
 import { useStyles } from './styles'
 
-export const TodoItem: React.FC<TodoData> = ({
+export const TodoItem: React.FC<Todo> = ({
 	id,
 	isDone,
 	title,

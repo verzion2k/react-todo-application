@@ -1,14 +1,16 @@
+import { RootState } from '@/types/types'
 import { List } from '@material-ui/core'
 import React from 'react'
+import { NewTodoInput } from '../newTodoInput/newTodoInput'
 import { TodoItem } from '../todoItem/todoItem'
-import { TodoListProps } from './interface'
 import { useStyles } from './styles'
 
-const TodoListComponent: React.FC<TodoListProps> = ({ todos }) => {
+const TodoListComponent: React.FC<RootState> = ({ todos }) => {
 	const classes = useStyles()
 
 	return (
 		<List className={classes.root}>
+			<NewTodoInput />
 			{todos?.map(todo => (
 				<React.Fragment key={todo.id}>
 					<TodoItem

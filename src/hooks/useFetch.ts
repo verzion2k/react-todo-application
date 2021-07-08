@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
-import { TodoData } from '@/types/todoData'
+import { Todo } from '@/types/types'
 
 export type UseFetch = (url: string) => {
 	loading: boolean
 	error: string
-	data: TodoData[]
+	data: Todo[]
 }
 
 export const useFetch: UseFetch = url => {
