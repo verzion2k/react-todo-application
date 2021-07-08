@@ -5,7 +5,7 @@ import { Container } from '@material-ui/core';
 import { TodoList } from '@/components/todoList';
 import { setTodo } from '@/store/todos/todos.action';
 import { SetTodoAction, useTodos } from '@/store/todos';
-import { useStyles } from './App.style';
+import { useStyles } from '@/app.style';
 
 export const fetchTodoData =
 	() => async (dispatch: Dispatch<SetTodoAction>) => {
@@ -20,7 +20,7 @@ export const fetchTodoData =
 		dispatch(setTodo(todos));
 	};
 
-const App: React.FC = () => {
+export const App: React.FC = () => {
 	const classes = useStyles();
 	const dispatch = useDispatch();
 	const todos = useTodos();
@@ -35,5 +35,3 @@ const App: React.FC = () => {
 		</Container>
 	);
 };
-
-export default App;
