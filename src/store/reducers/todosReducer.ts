@@ -45,7 +45,7 @@ export const todosReducer = (
 			return {
 				...state,
 				todos: state.todos.map(el =>
-					el.id === action.payload.id ? { ...el, title: action.payload } : el
+					el.id === action.payload.id ? { ...el, title: action.payload.title } : el
 				),
 			};
 		}
