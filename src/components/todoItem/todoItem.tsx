@@ -1,4 +1,5 @@
-import { Todo } from '@/types/types'
+import { removeTodoHandler } from '@/store/actionCreators';
+import { Todo } from '@/types/types';
 import {
 	Checkbox,
 	IconButton,
@@ -6,11 +7,12 @@ import {
 	ListItemIcon,
 	ListItemSecondaryAction,
 	ListItemText,
-} from '@material-ui/core'
-import DeleteIcon from '@material-ui/icons/Delete'
-import clsx from 'clsx'
-import React from 'react'
-import { useStyles } from './styles'
+} from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete';
+import clsx from 'clsx';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { useStyles } from './styles';
 
 export const TodoItem: React.FC<Todo> = ({
 	id,
@@ -18,7 +20,12 @@ export const TodoItem: React.FC<Todo> = ({
 	title,
 	creationTimestamp,
 }) => {
-	const classes = useStyles()
+	const classes = useStyles();
+	const dispatch = useDispatch();
+
+	const deleteTodo = React.useCallback(() => {
+		dispatch(removeTodoHandler(id));
+	}, []);
 
 	return (
 		<ListItem role={undefined} dense button className={classes.root}>
@@ -34,11 +41,11 @@ export const TodoItem: React.FC<Todo> = ({
 					}),
 				}}
 			/>
-			<ListItemSecondaryAction>
+			<ListItemSecondaryAction onClick={deleteTodo}>
 				<IconButton edge='end' className={classes.delete}>
 					<DeleteIcon />
 				</IconButton>
 			</ListItemSecondaryAction>
 		</ListItem>
-	)
-}
+	);
+};

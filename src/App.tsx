@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { TodoList } from './components/todoList/todoList';
 import { fetchTodoData } from './store/reducers/todosReducer';
-import { RootState, SelectorTodoState } from './types/types';
+import { SelectorTodoState } from './types/types';
 
 const useStyles = makeStyles(theme =>
 	createStyles({
