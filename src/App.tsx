@@ -5,7 +5,7 @@ import { Container } from '@material-ui/core';
 import { TodoList } from '@/components/todoList';
 import { setTodo } from '@/store/todos/todos.action';
 import { SetTodoAction, useTodos } from '@/store/todos';
-import { useStyles } from './app.style';
+import { useStyles } from './App.style';
 
 export const fetchTodoData =
 	() => async (dispatch: Dispatch<SetTodoAction>) => {
