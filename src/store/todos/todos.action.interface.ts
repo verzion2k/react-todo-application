@@ -21,15 +21,21 @@ export interface EditTodoAction {
 	};
 }
 
+interface TestTodoAction {
+	type: TodosActionTypes.TEST_TODO;
+	payload: number;
+}
+
 export type TodoActions =
 	| SetTodoAction
 	| AddTodoAction
 	| RemoveTodoAction
-	| EditTodoAction;
+	| EditTodoAction
+	| TestTodoAction;
 
-export type SetTodoActionCreator = (title: Todo[]) => SetTodoAction;
+export type SetTodoActionCreator = (todos: Todo[]) => SetTodoAction;
 export type AddTodoActionCreator = (title: string) => AddTodoAction;
-export type RemoveTodoActionCreator = (title: number) => RemoveTodoAction;
+export type RemoveTodoActionCreator = (id: number) => RemoveTodoAction;
 export type EditTodoActionCreator = ({
 	id: number,
 	title: string,
